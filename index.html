@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JB Events and Moments</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Lora:ital,wght@0,400..700;1,400..700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/style.css">
+   
+</head>
+<body class="poppins text-dark-text bg-page-bg antialiased">
+    
+    
+   
+    <!-- Hero Section with Fading Background Image (Note the 'relative' class) -->
+    <section id="hero" class="relative pb-20 overflow-hidden">
+        
+            <!-- Background Slideshow Wrapper -->
+        <div id="hero-slideshow" class="absolute inset-0 z-0 overflow-hidden">
+
+            <!-- Slide 1 -->
+            <div class="hero-slide absolute inset-0 bg-cover bg-center"
+                style="background-image: url('img/flowers.png');"></div>
+
+            <!-- Slide 2 -->
+            <div class="hero-slide absolute inset-0 bg-cover bg-center"
+                style="background-image: url('img/hall-bg.jpg');"></div>
+
+            <!-- Slide 3 -->
+            <div class="hero-slide absolute inset-0 bg-cover bg-center"
+                style="background-image: url('img/wedding-bg.jpg');"></div>
+
+            <!-- Slide 4 -->
+            <div class="hero-slide absolute inset-0 bg-cover bg-center"
+                style="background-image: url('img/table-bg.jpg');"></div>
+
+            <!-- Gradient Overlay (unchanged) -->
+            <div class="absolute inset-0 bg-gradient-to-r from-black/40 to-transparent"></div>
+        </div>
+
+            <!-- Navigation Arrows -->
+        <div class="absolute inset-0 z-20 flex items-center justify-between px-6">
+            <button id="prevSlide" class="p-3 bg-black/40 rounded-full text-white hover:bg-black/60">
+                ◀
+            </button>
+            <button id="nextSlide" class="p-3 bg-black/40 rounded-full text-white hover:bg-black/60">
+                ▶
+            </button>
+        </div>
+
+            
+            <!-- Gradient Overlay: Fades from white/page-bg (left) to transparent (right) -->
+        <div class="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-transparent bg-black/40"></div>
+        </div>
+
+            <!-- Navigation Bar -->
+        <header class="relative top-0 z-50 h-60 pb-20 max-w-7xl">
+            <div class="text-primary-gold bg-black bg-opacity-70 flex border-b border-gray-300/30">
+                <div class="mx-auto px-4 py-2 text-center text-md">
+                    Info@jbeventsandmoments.ae
+                </div>
+                <div class="mx-auto px-4 py-2 text-center text-md">
+                    Call Us : +971 50 772 7052
+                </div>
+            </div>
+            <nav class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-40">
+                
+                <div class="flex items-center space-x-8">
+                    <a href="#" class="flex items-center gap-2">
+                        <img src="img/Jb-03.png" alt="Logo" class="w-40"/>
+                    </a>
+                </div>
+                <div class="hidden md:flex space-x-8 pt-0">
+                    <a href="#Home" class="text-lg font-medium text-primary-gold hover:text-primary-gold transition duration-150 hover:underline">Home</a>
+                    <a href="#About" class="text-lg font-medium text-primary-gold hover:text-primary-gold transition duration-150 hover:underline">About Us</a>
+                    <a href="#services" class="text-lg font-medium text-primary-gold hover:text-primary-gold transition duration-150 hover:underline">Services</a>
+                    <a href="#Events" class="text-lg font-medium text-primary-gold hover:text-primary-gold transition duration-150 hover:underline">Events</a>
+                    <a href="#contact" class="text-lg font-medium text-primary-gold hover:text-primary-gold transition duration-150 hover:underline">Contact Us</a>
+                </div>
+
+                <!-- Mobile Menu Button (Hamburger) -->
+                <button class="md:hidden p-2 text-primary-gold rounded-md focus:outline-none focus:ring-2 focus:ring-primary-gold bg-black/50" id="mobile-menu-button" aria-expanded="false" aria-controls="mobile-menu">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </nav>
+                <!-- Mobile Menu (Hidden by default) -->
+            <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100">
+                <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                    <a href="#Home" class="block px-3 py-2 rounded-md text-base font-medium text-dark-text hover:bg-gray-50 hover:text-primary-gold">Home</a>
+                    <a href="#About" class="block px-3 py-2 rounded-md text-base font-medium text-dark-text hover:bg-gray-50 hover:text-primary-gold">About Us</a>
+                    <a href="#services" class="block px-3 py-2 rounded-md text-base font-medium text-dark-text hover:bg-gray-50 hover:text-primary-gold">Services</a>
+                    <a href="#Events" class="block px-3 py-2 rounded-md text-base font-medium text-dark-text hover:bg-gray-50 hover:text-primary-gold">Events</a>
+                    <a href="#contact" class="block px-3 py-2 rounded-md text-base font-medium text-dark-text hover:bg-gray-50 hover:text-primary-gold">Contact</a>
+                </div>
+            </div>
+        </header>
+
+            <!-- Content Container (Relative and Z-indexed high to sit on top) -->
+        <div class="relative max-w-7xl mx-auto px-4 pt-8 sm:px-6 lg:px-8 text-center md:text-left z-10">
+            <h1 class="fade-left text-4xl sm:text-6xl font-medium mb-24 leading-tight text-white/70 md:max-w-xl lora">
+                Creating Moments That Last Forever
+            </h1>
+        </div>
+    </section>
+
+    <!-- About Us Section (New Content) -->
+    <section id="About" class="image-section-trigger py-20 md:py-32 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="md:flex md:items-center gap-12">
+                
+                <!-- Text Content (Left/Top) -->
+                <div class="md:w-1/2 mb-12 md:mb-0">
+                    <p class="text-xl font-lora italic text-primary-gold mb-3">Our Legacy of Luxury</p>
+                    <h2 class="fade-left text-4xl sm:text-5xl font-bold text-dark-text mb-6">
+                        The Art of Elevating Your Moment
+                    </h2>
+                    <div class="fade-left-strong">
+                    <p class="text-lg mb-6 text-gray-700 leading-relaxed font-lora">
+                        JB Moments and Events is a premium event management company committed to excellence, creativity, and precision. We believe every occasion deserves thoughtful planning and a unique personal touch.
+                    </p>
+                    
+                    <p class="text-lg mb-8 text-gray-700 leading-relaxed font-lora">
+                        Our team ensures that every detail—from concept to execution—is handled with professionalism and care. Whether it is an intimate celebration or a large-scale corporate event, we deliver results that exceed expectations and leave a lasting impression.
+                    </p>
+                    </div>
+                    <button id="ContactBtn2" class="inline-block bg-yellow-500 text-white font-semibold tracking-wider text-sm uppercase py-3 px-8 rounded-lg shadow-md hover:bg-opacity-90 transition duration-300">
+                        Arrange a Consultation
+                    </button>
+                </div>
+               
+                    <!-- Image (Right/Bottom) - The animation target -->
+                <div class="md:w-1/2 relative" id="image-container">
+                    <img id="animated-image" src="img/about.jpg" alt="Elegantly staged event space" 
+                        class="w-full h-auto object-cover rounded-xl shadow-2xl border-4 border-indigo-200 transform rotate-1 transition-transform duration-500">
+                </div>
+            </div>
+            
+        </div>
+    </section>
+    <!-- End About Us Section -->
+
+
+    <!-- Services Section -->
+    <section id="services" class="sm:sservices md:mservices py-20 md:py-24 bg-page-bg"> 
+        
+        <div class="max-w-7xl mx-auto px-10 sm:px-6 lg:px-8">
+            <h2 class="fade-left text-3xl sm:text-4xl font-bold text-center mb-12 text-dark-text lora">Our Signature Services</h2>
+            <div class="fade-left-strong">
+                <p class="text-center text-lg font-light mb-12 max-w-3xl mx-auto text-dark-text/70 lora">
+                    JB Moments and Events specializes in delivering exceptional experiences tailored to every occasion. With a refined approach and a strong focus on quality, we create elegant, seamless, and memorable events that reflect our clients vision.
+                </p>
+            </div>
+            <div class="max-w-7xl mx-auto px-6 pt-8">
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+            
+                  <!-- Card 1 (higher) -->
+                    <div class="image1 slide-up group overflow-hidden">
+                        <div class="relative h-[450px] bg-cover bg-center hover:scale-105 transition-all duration-500"
+                        style="background-image: url('img/event_management.jpg');">
+
+                            <!-- Black Sliding Overlay -->
+                            <div class="absolute inset-0 bg-black/80 translate-y-full group-hover:translate-y-0 
+                                transition-all duration-500 flex items-center justify-center text-center px-6">
+                                <p class="text-white text-lg font-light">
+                                    Full planning and on-the-day coordination tailored to your requirements.
+                                </p>
+                            </div>
+                            <div class="absolute inset-0 bg-gradient-to-b from-page-bg via-page-bg/20 to-transparent bg-black/10"></div>
+                            <div class="relative flex flex-col h-full text-center pt-10 text-black/70">
+                                <h3 class="text-lg font-semibold">Event Planning & Coordination</h3>
+                            </div>
+                        </div>
+                    </div>
+            
+                  <!-- Card 2 (lower) -->
+                    <div class="image2 slide-up group overflow-hidden">
+                        <div class="relative h-[450px] bg-cover bg-center hover:scale-105 transition-all duration-500"
+                            style="background-image: url('img/wedding_planning.jpg');">
+                            <!-- Black Sliding Overlay -->
+                            <div class="absolute inset-0 bg-black/80 translate-y-full group-hover:translate-y-0 
+                                transition-all duration-500 flex items-center justify-center text-center px-6">
+                                <p class="text-white text-lg font-light">
+                                    Creative themes, décor styling, and visual concepts that bring your ideas to life.
+                                </p>
+                            </div>
+                            <div class="absolute inset-0 bg-gradient-to-b from-page-bg via-page-bg/20 to-transparent bg-black/10"></div>
+                            <div class="relative flex flex-col h-full text-center pt-10 text-black/70">
+                            <h3 class="text-lg font-semibold">Concept Creation & Event Design</h3>
+                            </div>
+                        </div>
+                    </div>
+            
+                  <!-- Card 3 (higher) -->
+                    <div class="image3 slide-up group overflow-hidden">
+                        <div class="relative h-[450px] bg-cover bg-center hover:scale-105 transition-all duration-500"
+                            style="background-image: url('img/venue_selection.jpg');">
+                            <!-- Black Sliding Overlay -->
+                            <div class="absolute inset-0 bg-black/80 translate-y-full group-hover:translate-y-0 
+                            transition-all duration-500 flex items-center justify-center text-center px-6">
+                                <p class="text-white text-lg font-light">
+                                    Coordination with trusted partners, including décor, entertainment, photography, and catering.
+                                </p>
+                            </div>
+                            <div class="absolute inset-0 bg-gradient-to-b from-page-bg via-page-bg/20 to-transparent bg-black/10"></div>
+                            <div class="relative flex flex-col h-full text-center pt-10 text-black/70">
+                                <h3 class="text-lg font-semibold">Vendor & Supplier Management</h3>
+                            </div>
+                        </div>
+                    </div>
+            
+                  <!-- Card 4 (lower) -->
+                    <div class="image4 slide-up group overflow-hidden">
+                        <div class="relative h-[450px] bg-cover bg-center hover:scale-105 transition-all duration-500"
+                            style="background-image: url('img/birthday_parties.jpg');">
+                            <!-- Black Sliding Overlay -->
+                            <div class="absolute inset-0 bg-black/80 translate-y-full group-hover:translate-y-0 
+                                transition-all duration-500 flex items-center justify-center text-center px-6">
+                                <p class="text-white text-lg font-light">
+                                    Professional supervision to ensure a smooth, stress-free event.
+                                </p>
+                            </div>
+                            <div class="absolute inset-0 bg-gradient-to-b from-page-bg via-page-bg/20 to-transparent bg-black/10"></div>
+                            <div class="relative flex flex-col h-full text-center pt-10 text-black/70">
+                            <h3 class="text-lg font-semibold">On-Site Management</h3>
+                            </div>
+                        </div>
+                    </div>
+                
+                  <!-- Card 5  -->
+                    <div class="image5 slide-up group overflow-hidden">
+                        <div class="relative h-[450px] bg-cover bg-center hover:scale-105 transition-all duration-500"
+                            style="background-image: url('img/birthday_parties.jpg');">
+                            <!-- Black Sliding Overlay -->
+                            <div class="absolute inset-0 bg-black/80 translate-y-full group-hover:translate-y-0 
+                                transition-all duration-500 flex items-center justify-center text-center px-6">
+                                <p class="text-white text-lg font-light">
+                                    Product launches, brand activations, conferences, meetings, and award ceremonies.
+                                </p>
+                            </div>
+                            <div class="absolute inset-0 bg-gradient-to-b from-page-bg via-page-bg/20 to-transparent bg-black/10"></div>
+                            <div class="relative flex flex-col h-full text-center pt-10 text-black/70">
+                                <h3 class="text-lg font-semibold">Corporate Events</h3>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Card 6  -->
+                    <div class="image6 slide-up group overflow-hidden">
+                        <div class="relative h-[450px] bg-cover bg-center hover:scale-105 transition-all duration-500"
+                            style="background-image: url('img/birthday_parties.jpg');">
+                            <!-- Black Sliding Overlay -->
+                            <div class="absolute inset-0 bg-black/80 translate-y-full group-hover:translate-y-0 
+                                transition-all duration-500 flex items-center justify-center text-center px-6">
+                                <p class="text-white text-lg font-light">
+                                    Birthdays, anniversaries, engagements, proposals, weddings, and family gatherings.
+                                </p>
+                            </div>
+                            <div class="absolute inset-0 bg-gradient-to-b from-page-bg via-page-bg/20 to-transparent bg-black/10"></div>
+                            <div class="relative flex flex-col h-full text-center pt-10 text-black/70">
+                                <h3 class="text-lg font-semibold">Private Celebrations</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+              </div>
+        </div> 
+    </section>
+
+    
+    
+
+    <!-- Our Process Section -->
+    <section id="process" class="py-16 md:py-24 bg-[url('img/bg1.jpg')] bg-cover bg-center bg-white/90 bg-blend-overlay">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl sm:text-4xl font-bold text-center mb-12 text-dark-text">The JB Events Standard: Our Process</h2>
+            <div class="relative">
+                <!-- Timeline Line (Hidden on Mobile) -->
+                <div class="hidden md:block absolute h-full w-1 bg-primary-gold left-1/2 transform -translate-x-1/2"></div>  
+                <div class="space-y-16">
+                    <!-- Step 1 -->
+                    <div class="flex flex-col md:flex-row items-start md:items-center">
+                        <div class="md:w-1/2 md:pr-12 text-center md:text-right">
+                            <h3 class="text-2xl font-semibold text-secondary-black mb-2">1. Consultation & Blueprint</h3>
+                            <p class="text-gray-600">We begin with a personalized discussion to capture your unique vision and expectations. This forms the foundation of the event blueprint.</p>
+                        </div>
+                        <div class="hidden md:block w-8 h-8 bg-primary-gold rounded-full ring-4 ring-primary-gold ring-opacity-50 absolute left-1/2 transform -translate-x-1/2"></div>
+                        <div class="md:w-1/2 md:pl-12 text-center md:text-left pt-2 md:pt-0 border-l-4 border-primary-gold md:border-l-0 md:border-r-0 md:border-none md:p-0">
+                            <!-- Empty for timeline layout balance -->
+                        </div>
+                    </div>
+
+                    <!-- Step 2 -->
+                    <div class="flex flex-col md:flex-row items-start md:items-center">
+                        <div class="md:w-1/2 md:pr-12 text-center md:text-right order-2 md:order-1 pt-2 md:pt-0 border-l-4 border-primary-gold md:border-l-0 md:border-r-0 md:border-none md:p-0">
+                            <!-- Empty for timeline layout balance -->
+                        </div>
+                        <div class="hidden md:block w-8 h-8 bg-primary-gold rounded-full ring-4 ring-primary-gold ring-opacity-50 absolute left-1/2 transform -translate-x-1/2 order-2"></div>
+                        <div class="md:w-1/2 md:pl-12 text-center md:text-left order-1 md:order-3">
+                            <h3 class="text-2xl font-semibold text-secondary-black mb-2">2. Curation & Design</h3>
+                            <p class="text-gray-600">We source exclusive venues and elite vendors, and present refined design concepts that elevate your event's aesthetic to a luxury standard.</p>
+                        </div>
+                    </div>
+
+                    <!-- Step 3 -->
+                    <div class="flex flex-col md:flex-row items-start md:items-center">
+                        <div class="md:w-1/2 md:pr-12 text-center md:text-right">
+                            <h3 class="text-2xl font-semibold text-secondary-black mb-2">3. Detailed Logistics</h3>
+                            <p class="text-gray-600">Every detail is finalized, from guest management to comprehensive run-of-show documents, ensuring a completely seamless lead-up.</p>
+                        </div>
+                        <div class="hidden md:block w-8 h-8 bg-primary-gold rounded-full ring-4 ring-primary-gold ring-opacity-50 absolute left-1/2 transform -translate-x-1/2"></div>
+                        <div class="md:w-1/2 md:pl-12 text-center md:text-left pt-2 md:pt-0 border-l-4 border-primary-gold md:border-l-0 md:border-r-0 md:border-none md:p-0">
+                            <!-- Empty for timeline layout balance -->
+                        </div>
+                    </div>
+
+                    <!-- Step 4 -->
+                    <div class="flex flex-col md:flex-row items-start md:items-center">
+                        <div class="md:w-1/2 md:pr-12 text-center md:text-right order-2 md:order-1 pt-2 md:pt-0 border-l-4 border-primary-gold md:border-l-0 md:border-r-0 md:border-none md:p-0">
+                            <!-- Empty for timeline layout balance -->
+                        </div>
+                        <div class="hidden md:block w-8 h-8 bg-primary-gold rounded-full ring-4 ring-primary-gold ring-opacity-50 absolute left-1/2 transform -translate-x-1/2 order-2"></div>
+                        <div class="md:w-1/2 md:pl-12 text-center md:text-left order-1 md:order-3">
+                            <h3 class="text-2xl font-semibold text-secondary-black mb-2">4. Flawless Execution</h3>
+                            <p class="text-gray-600">On the day, the JB Events team is on-site, managing every facet of the event discreetly and professionally, allowing you to simply enjoy your moments.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+        <!-- End Our Process Section -->
+        <!-- Testimonials -->
+    <section id="testimonials" class="bg-[url('img/BG7.png')] bg-cover bg-center px-4 py-16">
+        <h2 class="text-3xl sm:text-4xl font-semibold text-stone-900 text-center mb-8">
+        What People Are Saying
+        </h2>
+  
+        <div class="relative max-w-6xl mx-auto px-4 py-16">
+            <!-- viewport -->
+            <div class="overflow-hidden rounded-2xl bg-white/70 ">
+                <!-- track -->
+                <div id="tTrack" class="flex w-full transition-transform duration-500 ease-out"
+                    style="transform: translateX(0);">
+                    <!-- Slide 1 -->
+                    <figure class="w-full shrink-0 px-6 sm:px-12 py-12 text-center">
+                        <div class="text-primary-gold text-2xl mb-4" aria-hidden="true">★★★★★</div>
+                        <blockquote class="text-xl sm:text-2xl leading-relaxed text-stone-800 max-w-3xl mx-auto">
+                        "JB Events handled my wedding and reception. They took over everything — décor, photography,
+                        videography, and lighting. The team was very professional yet friendly and responsive to all
+                        our suggestions. Every vision was beautifully executed. Highly recommended!"
+            
+                        </blockquote>
+                        <figcaption class="mt-8 flex items-center justify-center gap-3">
+                        <img src="https://i.pravatar.cc/64?img=32" class="w-12 h-12 rounded-full" alt="Liam Smith">
+                        <div class="text-left">
+                            <div class="font-semibold text-stone-900">Liam Smith</div>
+                            <div class="text-stone-500 text-sm">Co-Founder</div>
+                        </div>
+                        </figcaption>
+                    </figure>
+            
+                    <!-- Slide 2 -->
+                    <figure class="w-full shrink-0 px-6 sm:px-12 py-12 text-center">
+                        <div class="text-primary-gold text-2xl mb-4" aria-hidden="true">★★★★★</div>
+                        <blockquote class="text-xl sm:text-2xl leading-relaxed text-stone-800 max-w-3xl mx-auto">
+                            "Our corporate gala was beyond expectation. The JB team managed every element with precision,
+                            elegance, and creativity. Their ability to align with our brand image was exceptional. A class act!"
+                        </blockquote>
+                        <figcaption class="mt-8 flex items-center justify-center gap-3">
+                            <img src="https://i.pravatar.cc/64?img=15" class="w-12 h-12 rounded-full" alt="Alex R.">
+                            <div class="text-left">
+                                <div class="font-semibold text-stone-900">Alex R.</div>
+                                <div class="text-stone-500 text-sm">Designer</div>
+                            </div>
+                        </figcaption>
+                    </figure>
+            
+                    <!-- Slide 3 -->
+                    <figure class="w-full shrink-0 px-6 sm:px-12 py-12 text-center">
+                        <div class="text-primary-gold text-2xl mb-4" aria-hidden="true">★★★★★</div>
+                        <blockquote class="text-xl sm:text-2xl leading-relaxed text-stone-800 max-w-3xl mx-auto">
+                            "My 30th birthday party was pure perfection. From the design to the entertainment,
+                            everything was elegant and seamless. JB Events transformed my celebration into something magical."
+                        </blockquote>
+                        <figcaption class="mt-8 flex items-center justify-center gap-3">
+                            <img src="https://i.pravatar.cc/64?img=48" class="w-12 h-12 rounded-full" alt="Lina K.">
+                            <div class="text-left">
+                                <div class="font-semibold text-stone-900">Lina K.</div>
+                                <div class="text-stone-500 text-sm">Customer</div>
+                            </div>
+                        </figcaption>
+                    </figure>
+                </div>
+            </div>
+    
+            <!-- arrows -->
+            <button id="tPrev" class="absolute left-2 top-1/2 -translate-y-1/2 p-2 rounded-full hover:bg-primary-gold"
+                aria-label="Previous testimonial">
+                <img src="img/arrow-left.svg" class="w-6 h-6" />
+            </button>
+            <button id="tNext" class="absolute right-2 top-1/2 -translate-y-1/2 p-2 rounded-full hover:bg-primary-gold"
+                aria-label="Next testimonial">
+                <img src="img/arrow-right.svg" class="w-6 h-6" />
+            </button>
+    
+            <!-- dots -->
+            <div id="tDots" class="mt-6 flex justify-center gap-2">
+                <button class="h-1.5 w-6 rounded-full bg-stone-300" aria-label="Slide 1"></button>
+                <button class="h-1.5 w-6 rounded-full bg-stone-300" aria-label="Slide 2"></button>
+                <button class="h-1.5 w-6 rounded-full bg-stone-300" aria-label="Slide 3"></button>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Contact / Inquiry Form Section -->
+    <section id="contact" class="py-16 md:py-24 bg-secondary-black text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-lg mx-auto p-8 rounded-xl shadow-2xl text-dark-text bg-black bg-opacity-70">
+                    <!-- Logo -->
+                <div class="flex justify-center mb-4">
+                    <img src="img/JB-03.png" alt="Logo" class="h-60"/>
+                </div>
+                    <!-- Contact Form -->
+                <form class="space-y-4">
+                    <input type="text" placeholder="Name"
+                    class="w-full p-3 rounded-md text-black focus:outline-none focus:ring-2 focus:ring-primary-gold" />
+                    <input type="tel" placeholder="Phone"
+                    class="w-full p-3 rounded-md text-black focus:outline-none focus:ring-2 focus:ring-primary-gold" />
+                    <input type="email" placeholder="Email"
+                    class="w-full p-3 rounded-md text-black focus:outline-none focus:ring-2 focus:ring-primary-gold" />
+                    
+            
+                    <select class="w-full p-3 rounded-md text-gray-700 focus:outline-none focus:ring-2 focus:ring-primary-gold">
+                        <option selected>What Type of Events Are You Looking For?</option>
+                        <option>Wedding</option>
+                        <option>Corporate</option>
+                        <option>Private Party</option>
+                    </select>
+            
+                    <button type="button" class="w-full bg-primary-gold text-white font-semibold py-3 rounded-md hover:bg-yellow-400 transition">
+                    Enter Website
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-[url('img/BG2.png')] bg-cover bg-center pt-32">
+        <div class="max-w-4xl mx-auto px-4 text-center space-y-6 items-center">
+
+                <!-- Contact Heading -->
+            <h3 class="text-sm font-bold tracking-wider-lg text-custom-accent uppercase pt-4">
+                Let's Talk
+            </h3>
+            <a href="#" class="flex items-center justify-center">
+                <img src="img/Jemia.jpeg" alt="Logo" class="w-80"/>
+            </a>
+            <h1 class="text-sm font-extrabold tracking-wider-lg text-custom-accent uppercase pt-4">
+                Jemia Boulfal
+            </h1>
+            <p class="text-lg text-gray-700 italic px-4 md:px-0">
+                Head of Events & Clients Relations
+            </p>
+
+            <!-- Phone Numbers & Email -->
+            <div class="space-y-1">
+                <!-- Phone Numbers -->
+                <div class="flex justify-center text-xl text-gray-800 font-medium flex-wrap">
+                    <a href="tel:+971507727052" class="hover:text-custom-accent transition mx-2">
+                        +971 50 772 7052
+                    </a>
+                </div>
+                
+                <!-- Email Address -->
+                <p class="text-xl pt-1">
+                    <a href="mailto:info@coutureeventsworldwide.com" class="text-custom-accent hover:text-primary-gold transition duration-200 underline">
+                        info@jbeventsandmoments.ae
+                    </a>
+                </p>
+            </div>
+
+                <!-- Social Media Icons -->
+            <div class="flex justify-center pt-6 space-x-3">
+                
+                    <!-- Instagram -->
+                <a href="#" class="p-3 rounded-md bg-light-gold hover:bg-custom-accent transition duration-200" aria-label="Instagram">
+                    <img src="img/instagram.svg" class="w-5 h-5" alt="Instagram Icon">
+                </a>
+                
+                    <!-- Facebook -->
+                <a href="#" class="p-3 rounded-md bg-light-gold hover:bg-custom-accent transition duration-200" aria-label="Facebook">   
+                    <img src="img/facebook.svg" class="w-5 h-5" alt="Facebook Icon">
+                </a>
+                
+                
+                    <!-- LinkedIn -->
+                <a href="#" class="p-3 rounded-md bg-light-gold hover:bg-custom-accent transition duration-200" aria-label="LinkedIn">
+                    <img src="img/linkedin.svg" class="w-5 h-5" alt="LinkedIn Icon">
+                </a>
+                
+                    <!-- WhatsApp -->
+                <a href="#" class="p-3 rounded-md bg-light-gold hover:bg-custom-accent transition duration-200" aria-label="WhatsApp">
+                    <img src="img/whatsapp.svg" class="w-5 h-5" alt="WhatsApp Icon">
+                </a>
+            </div>
+            
+                <!-- Optional: Copyright Line (often included at the very bottom) -->
+            <p class="pt-8 text-xs text-gray-500">
+                &copy; 2025 JB Events And Moments. All rights reserved.
+            </p>
+
+        </div>
+    </footer>
+    
+        <!-- Floating Contact Buttons -->
+    <div class="fixed bottom-6 right-6 flex flex-col gap-3 z-50">
+        <!-- WhatsApp Button -->
+        <a 
+        href="https://wa.me/971507727052" 
+        target="_blank"
+        class="bg-green-500 hover:bg-green-600 text-white w-12 h-12 flex items-center justify-center rounded-full shadow-lg transition-transform hover:scale-110"
+        >
+        <!-- WhatsApp Icon -->
+        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" class="w-6 h-6">
+            <path d="M20.52 3.48A11.77 11.77 0 0012 0a11.86 11.86 0 00-8.5 3.5A11.94 11.94 0 000 12a11.72 11.72 0 001.52 5.72L0 24l6.48-1.7A11.86 11.86 0 0012 24a11.94 11.94 0 008.5-3.5A11.86 11.86 0 0024 12a11.86 11.86 0 00-3.48-8.52zM12 22a9.74 9.74 0 01-4.95-1.35l-.35-.2-3.85 1 1-3.75-.25-.39A9.64 9.64 0 012 12a9.9 9.9 0 012.92-7.08A9.9 9.9 0 0112 2a9.9 9.9 0 017.08 2.92A9.9 9.9 0 0122 12a9.9 9.9 0 01-2.92 7.08A9.9 9.9 0 0112 22zm5.15-7.35c-.28-.14-1.66-.81-1.92-.9s-.45-.14-.64.14-.74.9-.91 1.09-.34.21-.62.07a7.95 7.95 0 01-2.34-1.43 8.77 8.77 0 01-1.62-2c-.17-.29 0-.45.13-.59s.29-.34.43-.51a1.86 1.86 0 00.28-.48.54.54 0 000-.5c-.07-.14-.63-1.53-.86-2.1s-.46-.47-.64-.48H8.9a1.11 1.11 0 00-.8.37 3.34 3.34 0 00-1 2.45 5.82 5.82 0 001.21 3.11A13.36 13.36 0 0012 17.2a4.84 4.84 0 002.92.9 3.75 3.75 0 002.45-1.17 2.88 2.88 0 00.78-1.75c.05-.15 0-.27-.1-.33z"/>
+        </svg>
+        </a>
+    
+        <!-- Call Button -->
+        <a 
+        href="tel:+971507727052" 
+        class="bg-green-500 hover:bg-green-600 text-white w-12 h-12 flex items-center justify-center rounded-full shadow-lg transition-transform hover:scale-110"
+        >
+        <!-- Phone Icon -->
+        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" class="w-6 h-6">
+            <path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.06-.24 11.72 11.72 0 003.67.59 1 1 0 011 1v3.61a1 1 0 01-1 1A17 17 0 013 5a1 1 0 011-1h3.61a1 1 0 011 1 11.72 11.72 0 00.59 3.67 1 1 0 01-.24 1.06z"/>
+        </svg>
+        </a>
+    </div>
+    
+        <!-- Sticky Button -->
+    <button id="contactBtn"
+    class="fixed top-1/3 right-0 -translate-y-1/2 bg-yellow-500 text-white font-semibold px-4 py-2 rounded-tl-2xl rounded-bl-2xl shadow-lg hover:bg-yellow-400 transition-all origin-center z-50 [writing-mode:vertical-rl]">
+    Contact Us
+    </button>
+
+        <!-- Popup Overlay -->
+    <div id="popupOverlay" class="hidden fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50">
+            <!-- Popup Box -->
+        <div class="bg-black text-white p-8 rounded-2xl w-[90%] max-w-md relative shadow-2xl">
+
+            <!-- Close Button -->
+            <button id="closePopup" class="absolute top-3 right-3 text-white text-xl hover:text-primary-gold">&times;</button>
+
+            <!-- Logo (optional) -->
+            <div class="flex justify-center mb-4">
+                <img src="img/JB-03.png" alt="Logo" class="h-60"/>
+            </div>
+
+            <!-- Contact Form -->
+            <form class="space-y-4">
+                <input type="text" placeholder="Name"
+                class="w-full p-3 rounded-md text-black focus:outline-none focus:ring-2 focus:ring-primary-gold" />
+                <input type="tel" placeholder="Phone"
+                class="w-full p-3 rounded-md text-black focus:outline-none focus:ring-2 focus:ring-primary-gold" />
+                <input type="email" placeholder="Email"
+                class="w-full p-3 rounded-md text-black focus:outline-none focus:ring-2 focus:ring-primary-gold" />
+            
+
+                <select class="w-full p-3 rounded-md text-gray-700 focus:outline-none focus:ring-2 focus:ring-primary-gold">
+                    <option selected>What Type of Events Are You Looking For?</option>
+                    <option>Wedding</option>
+                    <option>Corporate</option>
+                    <option>Private Party</option>
+                </select>
+
+                <button type="button" class="w-full bg-primary-gold text-white font-semibold py-3 rounded-md hover:bg-yellow-400 transition">
+                    Enter Website
+                </button>
+            </form>
+        </div>
+    </div>
+
+
+    <script src="js/main.js" defer></script>
+</body>
+</html>
