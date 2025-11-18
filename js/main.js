@@ -82,33 +82,52 @@ tailwind.config = {
 
 // --- Contact Popup Logic ---
 
-  document.addEventListener("DOMContentLoaded", () => {
-    const contactBtn = document.getElementById("contactBtn");
-    const ContactBtn2 = document.getElementById("ContactBtn2");
-    const popupOverlay = document.getElementById("popupOverlay");
-    const closePopup = document.getElementById("closePopup");
-  
-    // Open popup
-    contactBtn.addEventListener("click", () => {
-      popupOverlay.classList.remove("hidden");
-    });
+document.addEventListener("DOMContentLoaded", () => {
+  const contactBtn = document.getElementById("contactBtn");
+  const ContactBtn2 = document.getElementById("ContactBtn2");
+  const popupOverlay = document.getElementById("popupOverlay");
+  const popupBox = document.getElementById("popupBox");
+  const closePopup = document.getElementById("closePopup");
 
-    ContactBtn2.addEventListener("click", () => {
-        popupOverlay.classList.remove("hidden");
+  function openPopup() {
+    popupOverlay.classList.remove("hidden");
+
+    // reset animation instantly
+    popupBox.classList.remove("opacity-100", "scale-100");
+    popupBox.classList.add("opacity-0", "scale-90");
+
+    // allow browser to render reset, then animate
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        popupBox.classList.remove("opacity-0", "scale-90");
+        popupBox.classList.add("opacity-100", "scale-100");
       });
-  
-    // Close popup
-    closePopup.addEventListener("click", () => {
+    });
+  }
+
+  function closePopupFunc() {
+    popupBox.classList.add("opacity-0", "scale-90");
+    popupBox.classList.remove("opacity-100", "scale-100");
+
+    setTimeout(() => {
       popupOverlay.classList.add("hidden");
-    });
-  
-    // Close popup if clicked outside the form
-    popupOverlay.addEventListener("click", (e) => {
-      if (e.target === popupOverlay) {
-        popupOverlay.classList.add("hidden");
-      }
-    });
+    }, 300); // match duration-300
+  }
+
+  // Open popup events
+  contactBtn.addEventListener("click", openPopup);
+  ContactBtn2.addEventListener("click", openPopup);
+
+  // Close popup events
+  closePopup.addEventListener("click", closePopupFunc);
+
+  popupOverlay.addEventListener("click", (e) => {
+    if (e.target === popupOverlay) {
+      closePopupFunc();
+    }
   });
+});
+
   
 
 
@@ -148,7 +167,8 @@ tailwind.config = {
 
   // text elements to animate
 const animatedElements = document.querySelectorAll(
-  ".fade-left, .fade-left-strong, .image-reveal"
+  ".fade-left, .fade-left-strong, .fade-right, .fade-right-strong"  
+  // .fade-up, .fade-up-strong, .fade-down, .zoom-in
 );
 
 // Observer
@@ -161,7 +181,7 @@ const observer = new IntersectionObserver(
       }
     });
   },
-  { threshold: 0.3 }
+  { threshold: 0.6 } // Trigger when 50% of the element is visible
 );
 
 
@@ -175,9 +195,7 @@ const images = [
   { selector: ".image1", duration: "1s" },
   { selector: ".image2", duration: "2s" },
   { selector: ".image3", duration: "3s" },
-  { selector: ".image4", duration: "1s" },
-  { selector: ".image5", duration: "2s" },
-  { selector: ".image6", duration: "3s" }
+  { selector: ".image4", duration: "4s" }
 ];
 
 const observer2 = new IntersectionObserver(
@@ -256,17 +274,18 @@ function stopAuto() {
 }
 
 // Next & Prev buttons
-document.getElementById("nextSlide").addEventListener("click", () => {
-  stopAuto();
-  goToSlide((current + 1) % slides.length);
-  startAutoSlide();
-});
 
-document.getElementById("prevSlide").addEventListener("click", () => {
-  stopAuto();
-  goToSlide((current - 1 + slides.length) % slides.length);
-  startAutoSlide();
-});
+// document.getElementById("nextSlide").addEventListener("click", () => {
+//   stopAuto();
+//   goToSlide((current + 1) % slides.length);
+//   startAutoSlide();
+// });
+
+// document.getElementById("prevSlide").addEventListener("click", () => {
+//   stopAuto();
+//   goToSlide((current - 1 + slides.length) % slides.length);
+//   startAutoSlide();
+// });
 
 // Start autoplay
 startAutoSlide();
